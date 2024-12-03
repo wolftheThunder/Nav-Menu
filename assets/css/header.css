@@ -1,0 +1,124 @@
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+
+.navbar {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    width: 100%;
+    height: 98px;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1000;
+}
+
+.logo img {
+    height: 40px;
+    margin-right: 20px;
+    margin-left: 15px;
+}
+
+.nav-links ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    font-weight: 600;
+}
+
+.nav-links li {
+    position: relative;
+    margin: 0 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    padding: 10px 15px;
+}
+
+.mega-menu {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    margin-top: 98px;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(214, 201, 201, 0.95);
+    padding: 30px;
+    
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.nav-links li.dropdown:hover .mega-menu {
+    display: block;
+}
+
+
+.full-page-content {
+    margin: 0 auto;
+    width: 1200px;
+}
+
+.mega-menu-columns {
+    display: flex;
+    gap: 20px;
+}
+
+.column {
+    flex: 1;
+}
+
+.column h3 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.column p {
+    margin: 5px 0 15px;
+    color: #555;
+}
+
+
+.user-button {
+    display: flex;
+    align-items: center;
+    margin-left: 130px;
+}
+
+.profile-button, .app-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.profile-button img, .app-button img {
+    height: 40px;
+}
+
+.nav-divider {
+    border: none;
+    height: 1px;
+    background-color: #ccc;
+    margin: 0;
+}
+
+.close-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1001; 
+}
