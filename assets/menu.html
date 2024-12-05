@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audit Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+        }
+
+        .sidebar {
+            width: 200px;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        .sidebar h2 {
+            margin: 0 0 20px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar li {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .sidebar li:hover {
+            background-color: #ddd;
+        }
+
+        .main-content {
+            padding: 20px;
+            flex-grow: 1;
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        .insight {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .insight img {
+            width: 100px;
+            height: auto;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <h2>Our activities</h2>
+            <ul>
+                <li data-content="audit">Audit & Assurance Solutions</li>
+                <li data-content="financial">Financial advice</li>
+                <li data-content="operational">Operational Council</li>
+                <li data-content="consulting">Expertise Consulting</li>
+                <li data-content="legal">Legal and Tax Advice</li>
+                <li data-content="sustainable">Sustainable Transformation</li>
+                <li data-content="international">International Business Advisory</li>
+                <li data-content="financial-services">Financial Services</li>
+                <li data-content="outsourcing">Outsourcing or BPO</li>
+            </ul>
+        </aside>
+        <main class="main-content" id="mainContent">
+            <div class="section" id="mainText">
+                <h1>Audit</h1>
+                <p>Grant Thornton, a major player in Auditing in France and around the world for large groups, mid-sized companies, family businesses and the public sector.</p>
+                <a href="#">See this page →</a>
+            </div>
+            <div class="section" id="additionalInfo">
+                <h2>A powerful and integrated international network</h2>
+                <p>An international network united around a common promise Go Beyond – Let’s go further together.</p>
+            </div>
+            <div class="section" id="digitalAudit">
+                <h2>Digital Audit - Data Analytics Audit</h2>
+                <p>Like our clients, of all sizes and operating in all industries, our audit activity is transforming and innovating, by adopting and ...</p>
+            </div>
+            <div class="insight">
+                <img src="https://via.placeholder.com/100" alt="Insight Image">
+                <div>
+                    <h3>Insight:</h3>
+                    <p>Thanks to a location at the heart of the regions (24 offices), our Audit teams support international groups.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script>
+        const sidebarItems = document.querySelectorAll('.sidebar li');
+        const mainText = document.getElementById('mainText');
+        const additionalInfo = document.getElementById('additionalInfo');
+        const digitalAudit = document.getElementById('digitalAudit');
+
+        const contentData = {
+            audit: {
+                title: "Audit",
+                description: "Grant Thornton, a major player in Auditing in France and around the world for large groups, mid-sized companies, family businesses and the public sector.",
+                additional: "A powerful and integrated international network. An international network united around a common promise Go Beyond – Let’s go further together.",
+                digital: "Digital Audit - Data Analytics Audit. Like our clients, of all sizes and operating in all industries, our audit activity is transforming and innovating, by adopting and ..."
+            },
+            financial: {
+                title: "Financial Advice",
+                description: "We provide expert financial advice tailored to your business needs.",
+                additional: "Our financial services are designed to help you achieve your goals.",
+                digital: "We leverage data analytics to enhance financial decision-making."
+            },
+            operational: {
+                title: "Operational Council",
+                description: "Our operational council helps streamline your business processes.",
+                additional: "We focus on efficiency and effectiveness in operations.",
+                digital: "Utilizing technology to optimize operational workflows."
+            },
+            consulting: {
+                title: "Expertise Consulting",
+                description: "We offer consulting services to enhance your business expertise.",
+                additional: "Our consultants bring industry-specific knowledge.",
+                digital: "Data-driven insights for strategic decision-making."
+            },
+            legal: {
+                title: "Legal and Tax Advice",
+                description: "Get comprehensive legal and tax advice from our experts.",
+                additional: "We ensure compliance and mitigate risks.",
+                digital: "Innovative solutions for complex legal challenges."
+            },
+            sustainable: {
+                title: "Sustainable Transformation",
+                description: "We assist businesses in their sustainable transformation journey.",
+                additional: "Our approach integrates sustainability into core strategies.",
+                digital: "Driving change for a sustainable future."
+            },
+            international: {
+                title: "International Business Advisory",
+                description: "Our advisory services help you navigate international markets.",
+                additional: "We provide insights into global trends.",
+                digital: "Supporting cross-border transactions."
+            },
+            financialservices: {
+                title: "Financial Services",
+                description: "We provide a range of financial services to support your business.",
+                additional: "Our services include investment and risk management.",
+                digital: "Tailored financial solutions for your needs."
+            },
+            outsourcing: {
+                title: "Outsourcing or BPO",
+                description: "Our outsourcing services help you focus on your core business.",
+                additional: "We manage non-core functions efficiently.",
+                digital: "Leveraging technology for better service delivery."
+            }
+        };
+
+        sidebarItems.forEach(item => {
+            item.addEventListener('mouseover', () => {
+                const contentKey = item.getAttribute('data-content');
+                const content = contentData[contentKey];
+                mainText.innerHTML = `<h1>${content.title}</h1><p>${content.description}</p><a href="#">See this page →</a>`;
+                additionalInfo.innerHTML = `<h2>A powerful and integrated international network</h2><p>${content.additional}</p>`;
+                digitalAudit.innerHTML = `<h2>Digital Audit - Data Analytics Audit</h2><p>${content.digital}</p>`;
+            });
+        });
+    </script>
+</body>
+</html>
