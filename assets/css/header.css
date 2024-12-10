@@ -1,90 +1,710 @@
-/* General styles */
+
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-/* Navbar styles */
 .navbar {
-    display: flex;
-    align-items: center;
-    background-color: #fff;
-    width: 100%;
-    height: 98px;
-    padding: 0 20px;
-    position: relative;
-    z-index: 1000;
+  height: 98px;
+  width: 100%;
+  max-width: 1345px;
+  margin: 0 auto;
+  background-color: white;
+  border-bottom: 1px solid #ddd;
+  position: relative;
+  z-index: 1000;
 }
 
-.logo img {
-    height: 40px;
+.navbar-brand img {
+  height: 40px;
 }
 
-/* Navigation links */
-.nav-links ul {
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
-    font-weight: 600;
+.nav-link {
+  font-size: 16px;
+  font-weight: 500;
+  color: black;
+  padding: 15px 15px;
+  gap: 10px;
+  position: relative;
+}
+.nav-link:hover {
+color: #0056b3; 
 }
 
-.nav-links li {
-    position: relative;
-    margin: 0 20px;
+.nav-link .dropdown-icon {
+  margin-left: 5px;
+  font-size: 12px;
+  transition: transform 0.3s ease;
 }
 
-.nav-links a {
-    text-decoration: none;
-    color: #333;
-    padding: 10px 15px;
+
+.mega-dropdown {
+  position: fixed;
+  top: 98px;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 98px); 
+  background-color: rgb(252, 250, 250);
+  display: none;
+  z-index: 999;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Sidebar styles */
-.sidebar {
-    display: none; /* Hidden by default */
-    position: absolute; /* Position it below the navbar */
-    left: 0; /* Align to the left of the viewport */
-    top: 98px; /* Align just below the navbar */
-    z-index: 1000;
-    width: 200px; /* Fixed width for sidebar */
-    background-color: #f4f4f4; /* Background color */
-    padding: 20px; /* Padding */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+.nav-item:hover .mega-dropdown {
+  display: block;
 }
 
-/* Show the sidebar on hover */
-.nav-links li.dropdown:hover .sidebar {
-    display: block; /* Show on hover */
+.mega-dropdown-content {
+  display: flex;
+  height: 100%;
+  background: #f5f5f5;
+
 }
 
-.sidebar h3 {
-    margin-bottom: 10px; /* Space below the heading */
+.mega-dropdown-sidebar {
+  min-width: 325px;
+  background: #eceae7;
+  padding-top: 10px;
+  border-right: 2px solid #ddd;
+  overflow-y: auto;
+  width: 350px;
 }
 
-.sidebar ul {
-    list-style: none;
-    padding: 0;
-    margin: 0; /* Remove margin for a cleaner look */
+.sidebar-link {
+  display: block;
+  padding: 12px 20px;
+  font-size: 17px;
+  color: #17488A;
+  cursor: pointer;
+  text-decoration: underline;
+  position: relative;
+  transition: all 0.3s;
 }
 
-.submenu-item {
-    cursor: pointer;
-    padding: 10px; /* Padding for each item */
-    color: #333; /* Text color */
-    text-decoration: none; /* Remove underline */
-    transition: background-color 0.3s; /* Smooth transition for hover effect */
-    display: block; /* Display items in a block (vertical) */
+.sidebar-link:hover {
+  background-color: #f1f1f1;
+  color: #df6965;
+ text-decoration: underline !important;
 }
 
-.submenu-item:hover {
-    background-color: #ddd; /* Highlight on hover */
+.sidebar-link .bi {
+  position: absolute;
+  right: 15px;
+  font-size: 18px;
+  transition: transform 0.3s ease;
+  text-decoration: underline;
 }
 
-/* Divider */
-.nav-divider {
-    border: none;
-    height: 1px;
-    background-color: #ccc;
-    margin: 0;
+.sidebar-link:hover .bi {
+  transform: translateX(5px);
+  text-decoration: underline; 
 }
+
+.mega-dropdown-main {
+  /* flex-grow: 1; */
+  padding-left: 20px;
+  margin-left: 0;
+  padding-top: 20px;
+  width: 100%;
+  background-color: #f2f0ee;
+}
+.mega-dropdown-sidebar h4 {
+  font-size: 28px; 
+  font-weight: bold;
+  color: rgb(32, 16, 16); 
+  position: relative;
+  margin-left: 30px; 
+  margin-top: 30px;
+  /* margin-bottom: 15px; */
+  font-family: monospace;
+}
+
+.mega-dropdown-sidebar h4::after {
+  content: ""; 
+  display: block;
+  width: 50px; 
+  height: 2px; 
+  margin-top: 5px; 
+}
+
+.content-item {
+  display: none;
+  margin-top: 20px;
+}
+
+.content-item.active {
+  display: block;
+}
+
+
+.close-btn {
+  cursor: pointer;
+  font-size: 30px;
+  color: #aaa;
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-weight: bold;
+}
+
+.close-btn:hover {
+  color: #000;
+}
+.navbar-icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  
+}
+
+.navbar-icons i {
+  font-size: 30px;
+  color: black;
+  cursor: pointer;
+  size: 100px;
+}
+
+.navbar-icons i:hover {
+  color: #0056b3;
+}
+
+.audit-title {
+font-size: 32px;
+color: #5c4d8a; 
+margin-bottom: 10px; 
+}
+
+.audit-description {
+font-size: 16px; 
+color: #666; 
+margin-bottom: 20px; 
+}
+
+.audit-cta-link {
+font-size: 16px;
+color: black;
+text-decoration: none; 
+font-weight: bold; 
+}
+a {
+text-decoration: none !important;
+color: black;
+font-size: 16px;
+font-weight: bold;
+}
+.audit-cta-link:hover {
+color: #5c4d8a; 
+}
+
+.audit-arrow {
+font-weight: normal;
+}
+.insight-section {
+margin-top: px; /* Space above the section */
+height: 390px;
+/* /* max-width: 1200px; */
+overflow-y: auto; 
+width: 98%;
+margin-bottom: 1000px;
+}
+/* @media (min-width: 1400px) {
+.insight-section {
+    width: 99%;
+}
+} */
+.insight-cards{
+display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 15px;
+    max-width: 100%;
+}
+.insight-content {
+display: flex; 
+gap: 20px;
+max-height: 500px;
+/* /* max-width: 1000px;  */
+}
+
+@media (min-width: 1300px) {
+.insight-content {
+display: flex; 
+
+max-height: 550px;
+width: 94%;
+margin-bottom: 20px;
+/* max-width: 1000px; */
+}
+.overlay-card{
+width: 72%;
+}
+.insight-card {
+width:285px;
+} 
+.insight-card 
+.overlay-card{
+width: 72%;
+}
+
+
+
+.insight-text {
+flex-basis: 70%;
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+}
+
+
+.insight-card {
+padding: 5px;
+/* flex: 1 1 calc(45% - 30px);*/
+max-width: 310px; 
+transition: background-color 0.3s ease; 
+}
+.insight-cards h3{
+ font-size: 10px;
+}
+
+
+
+@media (min-width: 1000px) and (max-width: 1300px) {
+.insight-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 10px;
+    max-width: 100%; 
+}
+
+
+
+.insight-content {
+    display: inline;  
+    width: auto; 
+}
+}
+
+
+@media (min-width: 1400px) {
+.insight-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+}
+@media (min-width: 1600px) {
+.insight-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+}
+
+
+
+.insight-card:hover {
+background-color: #e0e0e0; 
+}
+
+
+
+
+@media (max-width: 1024px) {
+.insight-card {
+    flex: 1 1 calc(100% - 20px);
+}
+}
+
+.insight-card h3 {
+font-size: 16px;
+color: black;
+margin-bottom: 5px; 
+text-decoration: none;
+transition: text-decoration 0.3s ease; 
+}
+
+.insight-card:hover h3 {
+text-decoration: underline; 
+color: #5e46b3;
+}
+
+.insight-card p {
+font-size: 14px;
+color: #666; /* Gray color for description */
+margin: 0; /* Remove default margin */
+}
+
+/* Custom scrollbar styles */
+.insight-section::-webkit-scrollbar {
+width: 10px; /* Width of the scrollbar */
+}
+
+.insight-section::-webkit-scrollbar-track {
+background: #f1f1f1; /* Background of the scrollbar track */
+}
+
+.insight-section::-webkit-scrollbar-thumb {
+background: #5e41b5; /* Color of the scrollbar thumb */
+border-radius: 4px; /* Rounded corners for the thumb */
+}
+
+.insight-section::-webkit-scrollbar-thumb:hover {
+background: #5e41b5; /* Darker color on hover */
+}
+
+.insight-image {
+position: relative; /* Position relative for absolute positioning of overlay */
+flex-basis: 30%; /* Fixed width for the image */
+/* overflow: hidden; Hide overflow to create a clean effect */
+height: 360px;
+color: black;
+
+/* Set a fixed height for the image */
+
+}}
+@media (max-width: 1300px) {
+.insight-image {
+    display: none !important;
+}
+.insight-cards {
+
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 20px;
+padding: 0px 9px;
+}
+}
+
+
+
+.insight-image img {
+width: 300px; /* Make the image responsive */
+height: auto; /* Maintain aspect ratio */
+border-radius: 8px; /* Rounded corners for the image */
+transition: transform 0.3s ease;
+margin-right: 90px; 
+color: black;/* Smooth transition for scaling */
+}
+@media (min-width: 1400px) {
+.insight-image img {
+    width: 300px;
+    height: 300px;
+    margin-right: 0; /* Make the image responsive */
+}
+}
+@media (min-width: 1200px) {
+.insight-image img {
+    width: 250px;
+    height: 280px;
+    margin-right: 15px; /* Make the image responsive */
+}
+}
+@media (min-width: 1500px) {
+.insight-image img {
+    width: 300px;
+    margin-right: -10px; /* Make the image responsive */
+}
+.overlay-card {
+    width: 86%;
+}
+}
+.overlay-cards {
+position: absolute; /* Position overlay cards absolutely */
+bottom: -20px; /* Position it below the image */
+left: 0; /* Align to the left of the image */
+z-index: 10; /* Ensure it appears above the image */
+width: 350px; /* Match the width of the image */
+transform: translateY(0); /* Start at original position */
+transition: transform 0.3s ease; /* Smooth transition for moving */
+}
+
+.overlay-card {
+background-color: rgb(241, 234, 234); /* Background color for the card */
+border-radius: 8px; /* Rounded corners */
+padding: 15px;
+border-radius: 25px; /* Padding inside the card */
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+/* Set width to 100% to match the image */
+}
+
+/* Hover effect */
+.insight-image:hover img {
+transform: scale(1); /* Scale the image slightly on hover */
+}
+
+.insight-image:hover .overlay-cards {
+transform: translateY(-10px); /* Move the overlay card up on hover */
+}
+.navbar-icons {
+display: flex; /* Ensure icons are displayed in a row */
+align-items: center; /* Center icons vertically */
+gap: 15px; /* Space between icons */
+}
+
+.navbar-icon {
+height: 40px; /* Set a consistent height for the icons */
+width: auto; /* Maintain aspect ratio */
+cursor: pointer; /* Change cursor to pointer on hover */
+transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.navbar-icon:hover {
+opacity: 0.7; /* Change opacity on hover for effect */
+}
+.dropdown-search {
+position: absolute; /* Position below the navbar */
+top: 98px; /* Adjust based on navbar height */
+left: 0; /* Align to the left */
+width: 100%; /* Full width */
+max-width: 1356px; /* Set maximum width */
+background-color: white; /* Background color */
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+display: none; /* Hidden by default */
+padding: 20px; /* Padding around the container */
+z-index: 1000; /* Ensure it appears above other content */
+}
+
+.dropdown-search input {
+width: 100%; /* Full width input */
+padding: 10px; /* Padding inside the input */
+font-size: 16px; /* Font size */
+border: 1px solid #ddd; /* Border */
+border-radius: 4px; /* Rounded corners */
+}
+
+.dropdown-search button {
+background: none; /* No background */
+border: none; /* No border */
+font-size: 24px; /* Font size for close button */
+cursor: pointer; /* Pointer cursor */
+position: absolute; /* Position absolute for close button */
+top: 20px; /* Position from the top */
+right: 20px; /* Position from the right */
+}
+
+.popular-searches {
+margin-top: 20px; /* Space above popular searches */
+}
+
+.popular-searches h3 {
+margin-bottom: 10px; /* Space below the heading */
+}
+
+.popular-searches ul {
+list-style: none; /* Remove bullet points */
+padding: 0; /* Remove padding */
+}
+
+.popular-searches li {
+margin: 5px 0; /* Space between list items */
+}
+.collapse navbar-collapse{
+@media (max-width:990px) {
+display: none;
+
+}
+}
+.description-audit{
+font-size: 1.2rem;
+
+color: #666;
+font-weight: var(--font-weight-semibold);
+
+}
+.title-audit{
+font-size: 40px;
+color: #17488A ;
+}
+/* Add this to your CSS file */
+/* Add this to your CSS file */
+.audit-link {
+position: relative;
+text-decoration: none;
+color: #000; /* Default color */
+transition: color 0.3s ease;
+font-size: 22px; /* Smooth color transition */
+}
+
+.audit-link:hover {
+color: #007BFF; /* Change color on hover */
+}
+
+.audit-arrow {
+display: inline-block;
+font-size: 1.2em; /* Adjust size as needed */
+transition: transform 0.3s ease; /* Smooth arrow animation */
+}
+
+/* Custom arrow using CSS */
+.audit-arrow::before {
+content: '➔'; /* Use a different arrow character */
+display: inline-block;
+transition: transform 0.3s ease; /* Smooth animation */
+}
+
+.audit-link:hover .audit-arrow::before {
+transform: translateX(5px) rotate(10deg); /* Move and rotate arrow on hover */
+}
+.insight-card h3 {
+font-size: 1.3em; /* Adjust the font size */
+color: #272728; /* Set the text color */
+margin-bottom: 10px; /* Space below the heading */
+}
+
+.insight-card p {
+font-size: 1em; /* Adjust the font size */
+color: #666; /* Set the text color */
+line-height: 1.5; /* Improve readability */
+margin: 0; /* Remove default margin */
+}
+/* Add this CSS for the search bar */
+.search-bar {
+position: absolute; /* Position it below the navbar */
+top: 98px; /* Adjust based on navbar height */
+left: 0; /* Align to the left */
+width: 100%; /* Full width */
+max-width: 1345px; /* Set maximum width */
+background-color: white; /* Background color */
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+display: none; /* Hidden by default */
+padding: 20px; /* Padding around the container */
+z-index: 1000; /* Ensure it appears above other content */
+}
+
+.search-bar input {
+width: 100%; /* Full width input */
+padding: 10px; /* Padding inside the input */
+font-size: 16px; /* Font size */
+border: 1px solid #ddd; /* Border */
+border-radius: 4px; /* Rounded corners */
+}
+
+.search-bar button {
+background: none; /* No background */
+border: none; /* No border */
+font-size: 24px; /* Font size for close button */
+cursor: pointer; /* Pointer cursor */
+position: absolute; /* Position absolute for close button */
+top: 20px; /* Position from the top */
+right: 20px; /* Position from the right */
+}
+.nav-item {
+cursor: pointer;
+color: #4f2d7f;
+font-size: 16px;
+font-weight: 600;
+}
+
+
+.nav-item:hover i {
+transform: rotate(180deg);
+/* Rotate the icon to look like "angle up" */
+transition: transform 0.3s ease;
+}
+/* Full Page Search Overlay */
+.search-overlay {
+        display: none; /* Hidden by default */
+        position: fixed; /* Fixed position to cover the entire screen */
+        top: 0; /* Align to the top */
+        left: 0; /* Align to the left */
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+        z-index: 1000; /* Ensure it appears above other content */
+        padding: 20px; /* Padding around the container */
+    }
+
+    .search-bar {
+        max-width: 600px; /* Set a max width for the search bar */
+        margin: 100px auto; /* Center the search bar */
+    }
+
+    .search-bar input {
+        width: 100%; /* Full width input */
+        padding: 10px; /* Padding inside the input */
+        font-size: 16px; /* Font size */
+        border: 1px solid #ddd; /* Border */
+        border-radius: 4px; /* Rounded corners */
+    }
+
+    .search-bar button {
+        background: none; /* No background */
+        border: none; /* No border */
+        font-size: 24px; /* Font size for close button */
+        cursor: pointer; /* Pointer cursor */
+        position: absolute; /* Position absolute for close button */
+        top: 20px; /* Position from the top */
+        right: 20px; /* Position from the right */
+    }
+
+    .popular-searches {
+        margin-top: 20px; /* Space above popular searches */
+    }
+
+.menu-icon {
+cursor: pointer;
+font-size: 30px;
+transition: color 0.3s, background-color 0.3s; /* Add transition for background color */
+padding: 5px; /* Add some padding for better click area */
+border-radius: 50%; /* Make it circular */
+}
+
+.menu-icon.active {
+background-color: rgba(0, 0, 0, 0.1); /* Change to a darker background when active */
+color: lightgray; /* Change icon color on active */
+}
+
+    .dropdown-menu {
+        display: none; /* Hidden by default */
+        position: absolute;
+        top: 98px; /* Adjust based on your layout */
+        right: 90px;
+        background-color: rgb(247, 239, 239);
+        border: 1px solid #1b1919;
+        border-radius: 8px; /* Rounded corners */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        padding: 10px;
+        z-index: 1000;
+        width: 280px; /* Set width */
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 3 columns */
+        gap: 10px; /* Space between items */
+    }
+
+    .grid-item {
+        text-align: center;
+        padding: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .grid-item:hover {
+        background-color: #eee1e1; /* Change background on hover */
+        border-radius: 4px; /* Rounded corners on hover */
+    }
+
+    .grid-item img {
+        width: 40px; /* Icon size */
+        height: 40px; /* Icon size */
+    }
+
+    .grid-item p {
+        margin: 10px 0 0;
+        font-size: 10px; /* Font size for text */
+    }
+
+    .button-link {
+        display: block;
+        text-align: center;
+        margin-top: 10px;
+        padding: 10px;
+        background-color: #007BFF; /* Button color */
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+    }
+
+    .button-link:hover {
+        background-color: #0056b3; /* Darker on hover */
+    }
+

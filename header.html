@@ -6,415 +6,18 @@
   <title>Improved Mega Dropdown</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" />
 
-    /* Navbar Styling */
-    .navbar {
-      height: 98px;
-      width: 100%;
-      max-width: 1345px;
-      margin: 0 auto;
-      background-color: white;
-      border-bottom: 1px solid #ddd;
-      position: relative;
-      z-index: 1000;
-    }
-
-    .navbar-brand img {
-      height: 40px;
-    }
-
-    .nav-link {
-      font-size: 16px;
-      font-weight: 500;
-      color: black;
-      padding: 15px 15px;
-      gap: 10px;
-      position: relative;
-    }
-    .nav-link:hover {
-  color: #0056b3; /* Change this to your desired hover color */
-}
-
-    .nav-link .dropdown-icon {
-      margin-left: 5px;
-      font-size: 12px;
-      transition: transform 0.3s ease;
-    }
-
-    /* Mega Dropdown Styling */
-    .mega-dropdown {
-      position: fixed; /* Stay fixed even on scroll */
-      top: 98px; /* Place it right below the navbar */
-      left: 0;
-      width: 100%;
-      height: calc(100vh - 98px); /* Full height below the navbar */
-      background-color: rgb(252, 250, 250);
-      display: none;
-      z-index: 999;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    .nav-item:hover .mega-dropdown {
-      display: block;
-    }
-
-    .mega-dropdown-content {
-      display: flex;
-      height: 100%;
-      background: #f5f5f5;
-      /* padding: 20px; */
-    }
-
-    /* Sidebar Styling */
-    .mega-dropdown-sidebar {
-      width: 300px;
-      background: #d2d6db;
-      padding-top: 10px;
-      border-right: 2px solid #ddd;
-      overflow-y: auto;
-    }
-
-    .sidebar-link {
-      display: block;
-      padding: 12px 20px;
-      font-size: 16px;
-      color: #704ead;
-      cursor: pointer;
-      text-decoration: none;
-      position: relative;
-      transition: all 0.3s;
-    }
-
-    .sidebar-link:hover {
-      background-color: #f1f1f1;
-      color: #d9534f; /* Red color on hover */
-    }
-
-    .sidebar-link .bi {
-      position: absolute;
-      right: 15px;
-      font-size: 18px;
-      transition: transform 0.3s ease;
-    }
-
-    .sidebar-link:hover .bi {
-      transform: translateX(5px); /* Move the arrow on hover */
-    }
-
-    /* Main Content Area */
-    .mega-dropdown-main {
-      flex-grow: 1;
-      padding-left: 20px;
-      margin-left: 0;
-      padding-top: 20px;
-    }
-    .mega-dropdown-sidebar h4 {
-      font-size: 24px; /* Adjust font size */
-      font-weight: bold; /* Make it bold */
-      color: black; /* Text color */
-      position: relative;
-      margin-left: 50px; 
-      margin-top: 20px;/* For positioning the underline */
-      margin-bottom: 20px; /* Space below the header */
-    }
-
-    /* Underline effect */
-    .mega-dropdown-sidebar h4::after {
-      content: ""; /* Empty content for the pseudo-element */
-      display: block; /* Make it a block element */
-      width: 50px; /* Width of the underline */
-      height: 2px; /* Height of the underline */
-       /* Color of the underline */
-      margin-top: 5px; /* Space between text and underline */
-    }
-
-    .content-item {
-      display: none;
-      margin-top: 20px;
-    }
-
-    .content-item.active {
-      display: block;
-    }
-
-    /* Close Button */
-    .close-btn {
-      cursor: pointer;
-      font-size: 30px;
-      color: #aaa;
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      font-weight: bold;
-    }
-
-    .close-btn:hover {
-      color: #000;
-    }
-    .navbar-icons {
-      display: flex;
-      align-items: center;
-      gap: 25px;
-      
-    }
-
-    .navbar-icons i {
-      font-size: 30px;
-      color: black;
-      cursor: pointer;
-      size: 100px;
-    }
-
-    .navbar-icons i:hover {
-      color: #0056b3;
-    }
-    
-.audit-title {
-    font-size: 32px; /* Title font size */
-    color: #5c4d8a; /* Purple color for the title */
-    margin-bottom: 10px; /* Space below the title */
-}
-
-.audit-description {
-    font-size: 16px; /* Description font size */
-    color: #666; /* Gray color for the description */
-    margin-bottom: 20px; /* Space below the description */
-}
-
-.audit-cta-link {
-    font-size: 16px; /* Font size for the link */
-    color: black; /* Black color for the link */
-    text-decoration: none; /* Remove underline */
-    font-weight: bold; /* Bold text */
-}
- a {
-    text-decoration: none !important;
-    color: black;
-    font-size: 16px;
-    font-weight: bold;
-}
-.audit-cta-link:hover {
-    color: #5c4d8a; /* Change color on hover */
-}
-
-.audit-arrow {
-    font-weight: normal; /* Normal weight for the arrow */
-}
-.insight-section {
-    margin-top: 20px; /* Space above the section */
-    max-height: 400px;
-    max-width: 1200px; /* Set a maximum height for the section */
-    overflow-y: auto; /* Enable vertical scrolling */
-}
-
-.insight-content {
-    display: flex; /* Use flexbox for layout */
-    gap: 20px;
-    max-width: 1000px; /* Space between text and image */
-}
-
-
-.insight-text {
-    flex-basis: 70%;/* Allow text to take up remaining space */
-}
-.insight-cards {
-    display: flex; /* Use flexbox for layout */
-    flex-wrap: wrap; /* Allow cards to wrap to the next line */
-    gap: 20px; /* Space between cards */
-    margin-bottom: 20px; /* Space below each row of cards */
-}
-
-.insight-card {
-    padding: 15px; /* Padding inside cards */
-    /* Border for emphasis */ /* Slightly rounded corners */
-    flex: 1 1 calc(45% - 30px); /* Default: two cards per row */
-    max-width: 350px; /* Set maximum width for the cards */
-    transition: background-color 0.3s ease; /* Smooth transition for background color */
-}
-
-.insight-card:hover {
-    background-color: #e0e0e0; /* Background color on hover */
-}
-
-/* Media Queries for Responsive Design */
-@media (min-width: 1024px) and (max-width: 1400px) {
-    .insight-card {
-        flex: 1 1 calc(45% - 30px); /* Two cards per row */
-    }
-}
-
-@media (min-width: 1400px) {
-    .insight-card {
-        flex: 1 1 calc(39% - 30px); /* Three cards per row */
-    }
-}
-
-@media (max-width: 1024px) {
-    .insight-card {
-        flex: 1 1 calc(100% - 20px); /* One card per row */
-    }
-}
-
-.insight-card h3 {
-    font-size: 16px; /* Title font size */
-    color: black; /* Color for titles */
-    margin-bottom: 5px; /* Space below title */
-    text-decoration: none; /* Remove underline */
-    transition: text-decoration 0.3s ease; /* Smooth transition for underline */
-}
-
-.insight-card:hover h3 {
-    text-decoration: underline; /* Underline on hover */
-    color: #7565aa; /* Color for underlined title */
-}
-
-.insight-card p {
-    font-size: 14px; /* Description font size */
-    color: #666; /* Gray color for description */
-    margin: 0; /* Remove default margin */
-}
-
-/* Custom scrollbar styles */
-.insight-section::-webkit-scrollbar {
-    width: 8px; /* Width of the scrollbar */
-}
-
-.insight-section::-webkit-scrollbar-track {
-    background: #f1f1f1; /* Background of the scrollbar track */
-}
-
-.insight-section::-webkit-scrollbar-thumb {
-    background: #5c4d8a; /* Color of the scrollbar thumb */
-    border-radius: 4px; /* Rounded corners for the thumb */
-}
-
-.insight-section::-webkit-scrollbar-thumb:hover {
-    background: #4a3b6d; /* Darker color on hover */
-}
-
-.insight-image {
-    position: relative; /* Position relative for absolute positioning of overlay */
-    flex-basis: 30%; /* Fixed width for the image */
-    overflow: hidden; /* Hide overflow to create a clean effect */
-    height: 300px;
-   
-    /* Set a fixed height for the image */
-    @media (max-width: 1024px) {
-        display: none;
-        
-    }
-}
-
-
-.insight-image img {
-    width: 100%; /* Make the image responsive */
-    height: auto; /* Maintain aspect ratio */
-    border-radius: 8px; /* Rounded corners for the image */
-    transition: transform 0.3s ease; /* Smooth transition for scaling */
-}
-
-.overlay-cards {
-    position: absolute; /* Position overlay cards absolutely */
-    bottom: -20px; /* Position it below the image */
-    left: 0; /* Align to the left of the image */
-    z-index: 10; /* Ensure it appears above the image */
-    width: 100%; /* Match the width of the image */
-    transform: translateY(0); /* Start at original position */
-    transition: transform 0.3s ease; /* Smooth transition for moving */
-}
-
-.overlay-card {
-    background-color: rgb(163, 145, 145); /* Background color for the card */
-    border-radius: 8px; /* Rounded corners */
-    padding: 15px; /* Padding inside the card */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
-    width: 100%; /* Set width to 100% to match the image */
-}
-
-/* Hover effect */
-.insight-image:hover img {
-    transform: scale(1.05); /* Scale the image slightly on hover */
-}
-
-.insight-image:hover .overlay-cards {
-    transform: translateY(-10px); /* Move the overlay card up on hover */
-}
-.navbar-icons {
-    display: flex; /* Ensure icons are displayed in a row */
-    align-items: center; /* Center icons vertically */
-    gap: 25px; /* Space between icons */
-}
-
-.navbar-icon {
-    height: 30px; /* Set a consistent height for the icons */
-    width: auto; /* Maintain aspect ratio */
-    cursor: pointer; /* Change cursor to pointer on hover */
-    transition: color 0.3s ease; /* Smooth transition for hover effect */
-}
-
-.navbar-icon:hover {
-    opacity: 0.7; /* Change opacity on hover for effect */
-}
-.dropdown-search {
-    position: absolute; /* Position below the navbar */
-    top: 98px; /* Adjust based on navbar height */
-    left: 0; /* Align to the left */
-    width: 100%; /* Full width */
-    max-width: 1356px; /* Set maximum width */
-    background-color: white; /* Background color */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
-    display: none; /* Hidden by default */
-    padding: 20px; /* Padding around the container */
-    z-index: 1000; /* Ensure it appears above other content */
-}
-
-.dropdown-search input {
-    width: 100%; /* Full width input */
-    padding: 10px; /* Padding inside the input */
-    font-size: 16px; /* Font size */
-    border: 1px solid #ddd; /* Border */
-    border-radius: 4px; /* Rounded corners */
-}
-
-.dropdown-search button {
-    background: none; /* No background */
-    border: none; /* No border */
-    font-size: 24px; /* Font size for close button */
-    cursor: pointer; /* Pointer cursor */
-    position: absolute; /* Position absolute for close button */
-    top: 20px; /* Position from the top */
-    right: 20px; /* Position from the right */
-}
-
-.popular-searches {
-    margin-top: 20px; /* Space above popular searches */
-}
-
-.popular-searches h3 {
-    margin-bottom: 10px; /* Space below the heading */
-}
-
-.popular-searches ul {
-    list-style: none; /* Remove bullet points */
-    padding: 0; /* Remove padding */
-}
-
-.popular-searches li {
-    margin: 5px 0; /* Space between list items */
-}
-</style>
+ <link rel="stylesheet" href="assets/css/header.css">
 </head>
 <body>
 
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg">
   <div class="container d-flex align-items-center justify-content-between">
+    <div>
+      <img src="./assets/icons/hummenu.svg" alt="hamburger">
+    </div>
     <a class="navbar-brand" href="#">
       <img src="assets/icons/logo.svg" alt="IMDTEC">
     </a>
@@ -425,20 +28,23 @@
         <li class="nav-item">
           <a class="nav-link" href="#" id="servicesLink">
             Services 
-            <i class="bi bi-caret-down dropdown-icon"></i>
+            <i class="fa-solid fa-angle-down"></i>
           </a>
           <!-- Mega Dropdown -->
           <div class="mega-dropdown">
             <span class="close-btn" id="closeDropdown">&times;</span>
             <div class="mega-dropdown-content">
               <div class="mega-dropdown-sidebar">
-                <h4> our activities</h4>
+                <h4> Our Activities</h4>
                 <hr>
                 <a class="sidebar-link" data-target="audit" href="#">Audit <i class="bi bi-chevron-right"></i></a>
-                <a class="sidebar-link" data-target="finance" href="#">Financial advice <i class="bi bi-chevron-right"></i></a>
+                <a class="sidebar-link" data-target="finance" href="#">Audit & Assurance Solutions<i class="bi bi-chevron-right"></i></a>
                 <a class="sidebar-link" data-target="council" href="#">Operational Council <i class="bi bi-chevron-right"></i></a>
+                <a class="sidebar-link"  href="#">Conseil Juridique et fiscal </a>
+
                 <a class="sidebar-link" data-target="consulting" href="#">Expertise Consulting <i class="bi bi-chevron-right"></i></a>
                 <a class="sidebar-link" data-target="legal" href="#">Legal and Tax Advice <i class="bi bi-chevron-right"></i></a>
+                <a class="sidebar-link"  href="#">Finacial Services </a>
                 <a class="sidebar-link" data-target="sustainable" href="#">Sustainable Transformation <i class="bi bi-chevron-right"></i></a>
                 <a class="sidebar-link" data-target="international" href="#">International Business Advisory <i class="bi bi-chevron-right"></i></a>
                 <a class="sidebar-link" data-target="outsourcing" href="#">Outsourcing or BPO <i class="bi bi-chevron-right"></i></a>
@@ -450,13 +56,110 @@
                     <p class="description-audit">
                         Grant Thornton, a major player in Auditing in France and around the world for large groups, mid-sized companies, family businesses and the public sector.
                     </p>
+                    <a href="#" class="audit-link">See this page <span class="audit-arrow"></span></a>                    <hr> <!-- Line break for spacing -->
+                
+                    <!-- New Section -->
+                    <div class="insight-section">
+                        
+                        <div class="insight-content">
+                            <div class="insight-text">
+                                <div class="insight-cards">
+                                    <div class="insight-card">
+                                        <h3 >A powerful and integrated international network</h3>
+                                        <p>Un réseau international fédéré autour d’une promesse commune Go Beyond – Allons plus loin ensemble.</p>
+                                    </div>
+                                    <div class="insight-card">
+                                        <h3>Digital Audit - Data Analytics Audit</h3>
+                                        <p>A l’instar de nos clients, de toutes tailles et opérant dans toutes les industries, notre activité audit se transforme et innove, en adoptant et...</p>
+                                    </div>
+                                    <div class="insight-card">
+                                        <h3>Accounting doctrine</h3>
+                                        <p>Le département Doctrine Comptable intervient en soutien des équipes Grant Thornton pour l’accompagnement de leurs clients dans leurs...</p>
+                                    </div>
+                                    <div class="insight-card">
+                                        <h3>Auditing at the heart of the territories by Grant Thornton</h3>
+                                        <p>Grâce à une implantation au cœur des territoires (24 bureaux), nos équipes Audit accompagnent les groupes internationaux...</p>
+                                    </div>
+                                    <div class="insight-card">
+                                        <h3>People & Culture</h3>
+                                        <p>Chez Grant Thornton, nous vous offrons l’occasion de vivre l’Expérience de la Confiance en révélant le meilleur de vous-même au sein d’équipes conviviales et soudées.</p>
+                                    </div>
+                                    <div class="insight-card">
+                                        <h3>Financial Services</h3>
+                                        <p>Nos équipes d’audit accompagnent les établissements financiers, les sociétés de gestion d’actifs et les entreprises d’assurance.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="insight-image">
+                                <h2>Insight:</h2>
+                                <img src="assets/images/image3.jpg" alt="Insight Image" />
+                                <div class="overlay-cards">
+                                    <div class="overlay-card">
+                                        <h3>IFRS Example</h3>
+                                        <p>Consolidated Financial Statements...</p>
+                                        <p>Less than a minute | Oct 17, 2024</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="finance" class="content-item active">
+                    <h1 class="title-audit">Audit & Assurance Solutions</h1>
+                    <hr>
+                    <p class="description-audit">
+                        Beyond the legal audit, our Audit & Assurance Solutions help to inform the decision-making of all stakeholders.                    </p>
                     <a href="#" class="audit-link">See this page <span class="audit-arrow">→</span></a>
                     
                     <hr> <!-- Line break for spacing -->
                 
                     <!-- New Section -->
                     <div class="insight-section">
-                        <h2>Insight:</h2>
+                        
+                        <div class="insight-content">
+                            <div class="insight-text">
+                                <div class="insight-cards">
+                                    <div class="insight-card">
+                                        <h3>A powerful and integrated international network</h3>
+                                        <p>Un réseau international fédéré autour d’une promesse commune Go Beyond – Allons plus loin ensemble.</p>
+                                    </div>
+                                    <div class="insight-card">
+                                        <h3>Digital Audit - Data Analytics Audit</h3>
+                                        <p>A l’instar de nos clients, de toutes tailles et opérant dans toutes les industries, notre activité audit se transforme et innove, en adoptant et...</p>
+                                    </div>
+                                    <div class="insight-card">
+                                        <h3>Accounting doctrine</h3>
+                                        <p>Le département Doctrine Comptable intervient en soutien des équipes Grant Thornton pour l’accompagnement de leurs clients dans leurs...</p>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <div class="insight-image">
+                                <h2>Insight:</h2>
+                                <img src="assets/images/image4.jfif" alt="Insight Image" />
+                                <div class="overlay-cards">
+                                    <div class="overlay-card">
+                                        <h3>IFRS Example</h3>
+                                        <p>Consolidated Financial Statements...</p>
+                                        <p>Less than a minute | Oct 17, 2024</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="council" class="content-item active">
+                    <h1 class="title-audit">Financial advice</h1>
+                    <hr>
+                    <p class="description-audit">
+                        Buying or selling a company, managing a difficult situation, projecting future results, are key moments in the life of a company and its...                    </p>
+                    <a href="#" class="audit-link">See this page <span class="audit-arrow">→</span></a>
+                    
+                    <hr> <!-- Line break for spacing -->
+                
+                    <!-- New Section -->
+                    <div class="insight-section">
+                        
                         <div class="insight-content">
                             <div class="insight-text">
                                 <div class="insight-cards">
@@ -487,6 +190,7 @@
                                 </div>
                             </div>
                             <div class="insight-image">
+                                <h2>Insight:</h2>
                                 <img src="assets/images/pic.png" alt="Insight Image" />
                                 <div class="overlay-cards">
                                     <div class="overlay-card">
@@ -499,99 +203,287 @@
                         </div>
                     </div>
                 </div>
-                <div id="finance" class="content-item">
-                 
-                        <h1 class="title-audit">finance</h1>
-                        <p class="description-audit">
-                            Grant Thornton, a major player in Auditing in France and around the world for large groups, mid-sized companies, family businesses and the public sector.
-                        </p>
-                        <a href="#" class="audit-link">See this page <span class="audit-arrow">→</span></a>
-                        
-                        <br> <!-- Line break for spacing -->
+                <div id="consulting" class="content-item active">
+                    <h1 class="title-audit">Operational Council</h1>
+                    <hr>
+                    <p class="description-audit">
+                        Grant Thornton, a major player in Auditing in France and around the world for large groups, mid-sized companies, family businesses and the public sector.
+                    </p>
+                    <a href="#" class="audit-link">See this page <span class="audit-arrow">→</span></a>
                     
-                        <!-- New Section -->
-                        <div class="insight-section">
-                            <h2>Insight:</h2>
-                            <div class="insight-content">
-                                <div class="insight-text">
-                                    <div class="insight-cards">
-                                        <div class="insight-card">
-                                            <h3>A powerful and integrated international network</h3>
-                                            <p>Un réseau international fédéré autour d’une promesse commune Go Beyond – Allons plus loin ensemble.</p>
-                                        </div>
-                                        <div class="insight-card">
-                                            <h3>Digital Audit - Data Analytics Audit</h3>
-                                            <p>A l’instar de nos clients, de toutes tailles et opérant dans toutes les industries, notre activité audit se transforme et innove, en adoptant et...</p>
-                                        </div>
-                                        <div class="insight-card">
-                                            <h3>Accounting doctrine</h3>
-                                            <p>Le département Doctrine Comptable intervient en soutien des équipes Grant Thornton pour l’accompagnement de leurs clients dans leurs...</p>
-                                        </div>
-                                        <div class="insight-card">
-                                            <h3>Auditing at the heart of the territories by Grant Thornton</h3>
-                                            <p>Grâce à une implantation au cœur des territoires (24 bureaux), nos équipes Audit accompagnent les groupes internationaux...</p>
-                                        </div>
-                                        <div class="insight-card">
-                                            <h3>Sustainable Transformation</h3>
-                                            <p>Helping companies transform sustainably...</p>
-                                        </div>
-                                        <div class="insight-card">
-                                            <h3>International Business Advisory</h3>
-                                            <p>Global business advisory services...</p>
-                                        </div>
+                    <hr> <!-- Line break for spacing -->
+                
+                    <!-- New Section -->
+                    <div class="insight-section">
+                        
+                        <div class="insight-content">
+                            <div class="insight-text">
+                                <div class="insight-cards">
+                                    <div class="insight-card">
+                                        <h3>A powerful and integrated international network</h3>
+                                        <p>Un réseau international fédéré autour d’une promesse commune Go Beyond – Allons plus loin ensemble.</p>
+                                    </div>
+                                    <div class="insight-card">
+                                        <h3>Digital Audit - Data Analytics Audit</h3>
+                                        <p>A l’instar de nos clients, de toutes tailles et opérant dans toutes les industries, notre activité audit se transforme et innove, en adoptant et...</p>
+                                    </div>
+                                    <div class="insight-card">
+                                        <h3>Accounting doctrine</h3>
+                                        <p>Le département Doctrine Comptable intervient en soutien des équipes Grant Thornton pour l’accompagnement de leurs clients dans leurs...</p>
+                                    </div>
+                                    <div class="insight-card">
+                                        <h3>Auditing at the heart of the territories by Grant Thornton</h3>
+                                        <p>Grâce à une implantation au cœur des territoires (24 bureaux), nos équipes Audit accompagnent les groupes internationaux...</p>
+                                    </div>
+                                    <div class="insight-card">
+                                        <h3>People & Culture</h3>
+                                        <p>Chez Grant Thornton, nous vous offrons l’occasion de vivre l’Expérience de la Confiance en révélant le meilleur de vous-même au sein d’équipes conviviales et soudées.</p>
+                                    </div>
+                                    <div class="insight-card">
+                                        <h3>Financial Services</h3>
+                                        <p>Nos équipes d’audit accompagnent les établissements financiers, les sociétés de gestion d’actifs et les entreprises d’assurance.</p>
                                     </div>
                                 </div>
-                                <div class="insight-image">
-                                    <img src="assets/icons/logo.svg" alt="Insight Image" />
-                                    <div class="overlay-cards">
-                                        <div class="overlay-card">
-                                            <h3>IFRS Example</h3>
-                                            <p>Consolidated Financial Statements...</p>
-                                            <p>Illustrative Guide to IFRS</p>
-                                            <p>Less than a minute | Oct 17, 2024</p>
-                                        </div>
+                            </div>
+                            <div class="insight-image">
+                                <h2>Insight:</h2>
+                                <img src="assets/images/pic.png" alt="Insight Image" />
+                                <div class="overlay-cards">
+                                    <div class="overlay-card">
+                                        <h3>IFRS Example</h3>
+                                        <p>Consolidated Financial Statements...</p>
+                                        <p>Less than a minute | Oct 17, 2024</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
+                    </div>
                 </div>
-                <div id="council" class="content-item">
-                  <h3>Operational Council</h3>
-                  <p>Operational consulting...</p>
+                <div id="legal" class="content-item active">
+                    <h1 class="title-audit">Legal</h1>
+                    <hr>
+                    <p class="description-audit">
+                        Grant Thornton, a major player in Auditing in France and around the world for large groups, mid-sized companies, family businesses and the public sector.
+                    </p>
+                    <a href="#" class="audit-link">See this page <span class="audit-arrow">→</span></a>
+                    
+                    <hr> <!-- Line break for spacing -->
+                
+                    <!-- New Section -->
+                    <div class="insight-section">
+                        
+                        <div class="insight-content">
+                            <div class="insight-text">
+                                <div class="insight-cards">
+                                    <div class="insight-card">
+                                        <h3>A powerful and integrated international network</h3>
+                                        <p>Un réseau international fédéré autour d’une promesse commune Go Beyond – Allons plus loin ensemble.</p>
+                                    </div>
+                                    <div class="insight-card">
+                                        <h3>Digital Audit - Data Analytics Audit</h3>
+                                        <p>A l’instar de nos clients, de toutes tailles et opérant dans toutes les industries, notre activité audit se transforme et innove, en adoptant et...</p>
+                                    </div>
+                                    <div class="insight-card">
+                                        <h3>Accounting doctrine</h3>
+                                        <p>Le département Doctrine Comptable intervient en soutien des équipes Grant Thornton pour l’accompagnement de leurs clients dans leurs...</p>
+                                    </div>
+                                    <div class="insight-card">
+                                        <h3>Auditing at the heart of the territories by Grant Thornton</h3>
+                                        <p>Grâce à une implantation au cœur des territoires (24 bureaux), nos équipes Audit accompagnent les groupes internationaux...</p>
+                                    </div>
+                                    <div class="insight-card">
+                                        <h3>People & Culture</h3>
+                                        <p>Chez Grant Thornton, nous vous offrons l’occasion de vivre l’Expérience de la Confiance en révélant le meilleur de vous-même au sein d’équipes conviviales et soudées.</p>
+                                    </div>
+                                    <div class="insight-card">
+                                        <h3>Financial Services</h3>
+                                        <p>Nos équipes d’audit accompagnent les établissements financiers, les sociétés de gestion d’actifs et les entreprises d’assurance.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="insight-image">
+                                <h2>Insight:</h2>
+                                <img src="assets/images/pic.png" alt="Insight Image" />
+                                <div class="overlay-cards">
+                                    <div class="overlay-card">
+                                        <h3>IFRS Example</h3>
+                                        <p>Consolidated Financial Statements...</p>
+                                        <p>Less than a minute | Oct 17, 2024</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div id="council" class="content-item">
-                    <h3>Operational Council</h3>
-                    <p>Operational consulting...</p>
-                  </div>
-                  <div id="council" class="content-item">
-                    <h3>Operational Council</h3>
-                    <p>Operational consulting...</p>
-                  </div>
-                  <div id="council" class="content-item">
-                    <h3>Operational Council</h3>
-                    <p>Operational consulting...</p>
-                  </div>
-                <div id="consulting" class="content-item">
-                  <h3>Expertise Consulting</h3>
-                  <p>Consulting services for businesses...</p>
+                <div id="sustainable" class="content-item active">
+                    <h1 class="title-audit">Sustainable</h1>
+                    <hr>
+                    <p class="description-audit">
+                        Grant Thornton, a major player in Auditing in France and around the world for large groups, mid-sized companies, family businesses and the public sector.
+                    </p>
+                    <a href="#" class="audit-link">See this page <span class="audit-arrow">→</span></a>
+                    
+                    <hr> <!-- Line break for spacing -->
+                
+                    <!-- New Section -->
+                    <div class="insight-section">
+                        
+                        <div class="insight-content">
+                            <div class="insight-text">
+                                <div class="insight-cards">
+                                    <div class="insight-card">
+                                        <h3>A powerful and integrated international network</h3>
+                                        <p>Un réseau international fédéré autour d’une promesse commune Go Beyond – Allons plus loin ensemble.</p>
+                                    </div>
+                                    <div class="insight-card">
+                                        <h3>Digital Audit - Data Analytics Audit</h3>
+                                        <p>A l’instar de nos clients, de toutes tailles et opérant dans toutes les industries, notre activité audit se transforme et innove, en adoptant et...</p>
+                                    </div>
+                                    <div class="insight-card">
+                                        <h3>Accounting doctrine</h3>
+                                        <p>Le département Doctrine Comptable intervient en soutien des équipes Grant Thornton pour l’accompagnement de leurs clients dans leurs...</p>
+                                    </div>
+                                    <div class="insight-card">
+                                        <h3>Auditing at the heart of the territories by Grant Thornton</h3>
+                                        <p>Grâce à une implantation au cœur des territoires (24 bureaux), nos équipes Audit accompagnent les groupes internationaux...</p>
+                                    </div>
+                                    <div class="insight-card">
+                                        <h3>People & Culture</h3>
+                                        <p>Chez Grant Thornton, nous vous offrons l’occasion de vivre l’Expérience de la Confiance en révélant le meilleur de vous-même au sein d’équipes conviviales et soudées.</p>
+                                    </div>
+                                    <div class="insight-card">
+                                        <h3>Financial Services</h3>
+                                        <p>Nos équipes d’audit accompagnent les établissements financiers, les sociétés de gestion d’actifs et les entreprises d’assurance.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="insight-image">
+                                <h2>Insight:</h2>
+                                <img src="assets/images/pic.png" alt="Insight Image" />
+                                <div class="overlay-cards">
+                                    <div class="overlay-card">
+                                        <h3>IFRS Example</h3>
+                                        <p>Consolidated Financial Statements...</p>
+                                        <p>Less than a minute | Oct 17, 2024</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div id="legal" class="content-item">
-                  <h3>Legal and Tax Advice</h3>
-                  <p>Tax consulting and legal services...</p>
+                <div id="international" class="content-item active">
+                    <h1 class="title-audit">International</h1>
+                    <hr>
+                    <p class="description-audit">
+                        Grant Thornton, a major player in Auditing in France and around the world for large groups, mid-sized companies, family businesses and the public sector.
+                    </p>
+                    <a href="#" class="audit-link">See this page <span class="audit-arrow">→</span></a>
+                    
+                    <hr> <!-- Line break for spacing -->
+                
+                    <!-- New Section -->
+                    <div class="insight-section">
+                        
+                        <div class="insight-content">
+                            <div class="insight-text">
+                                <div class="insight-cards">
+                                    <div class="insight-card">
+                                        <h3>A powerful and integrated international network</h3>
+                                        <p>Un réseau international fédéré autour d’une promesse commune Go Beyond – Allons plus loin ensemble.</p>
+                                    </div>
+                                    <div class="insight-card">
+                                        <h3>Digital Audit - Data Analytics Audit</h3>
+                                        <p>A l’instar de nos clients, de toutes tailles et opérant dans toutes les industries, notre activité audit se transforme et innove, en adoptant et...</p>
+                                    </div>
+                                    <div class="insight-card">
+                                        <h3>Accounting doctrine</h3>
+                                        <p>Le département Doctrine Comptable intervient en soutien des équipes Grant Thornton pour l’accompagnement de leurs clients dans leurs...</p>
+                                    </div>
+                                    <div class="insight-card">
+                                        <h3>Auditing at the heart of the territories by Grant Thornton</h3>
+                                        <p>Grâce à une implantation au cœur des territoires (24 bureaux), nos équipes Audit accompagnent les groupes internationaux...</p>
+                                    </div>
+                                    <div class="insight-card">
+                                        <h3>People & Culture</h3>
+                                        <p>Chez Grant Thornton, nous vous offrons l’occasion de vivre l’Expérience de la Confiance en révélant le meilleur de vous-même au sein d’équipes conviviales et soudées.</p>
+                                    </div>
+                                    <div class="insight-card">
+                                        <h3>Financial Services</h3>
+                                        <p>Nos équipes d’audit accompagnent les établissements financiers, les sociétés de gestion d’actifs et les entreprises d’assurance.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="insight-image">
+                                <h2>Insight:</h2>
+                                <img src="assets/images/pic.png" alt="Insight Image" />
+                                <div class="overlay-cards">
+                                    <div class="overlay-card">
+                                        <h3>IFRS Example</h3>
+                                        <p>Consolidated Financial Statements...</p>
+                                        <p>Less than a minute | Oct 17, 2024</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div id="sustainable" class="content-item">
-                  <h3>Sustainable Transformation</h3>
-                  <p>Helping companies transform sustainably...</p>
+                <div id="outsourcing" class="content-item active">
+                    <h1 class="title-audit">Outsourcing</h1>
+                    <hr>
+                    <p class="description-audit">
+                        Grant Thornton, a major player in Auditing in France and around the world for large groups, mid-sized companies, family businesses and the public sector.
+                    </p>
+                    <a href="#" class="audit-link">See this page <span class="audit-arrow">→</span></a>
+                    
+                    <hr> <!-- Line break for spacing -->
+                
+                    <!-- New Section -->
+                    <div class="insight-section">
+                        
+                        <div class="insight-content">
+                            <div class="insight-text">
+                                <div class="insight-cards">
+                                    <div class="insight-card">
+                                        <h3>A powerful and integrated international network</h3>
+                                        <p>Un réseau international fédéré autour d’une promesse commune Go Beyond – Allons plus loin ensemble.</p>
+                                    </div>
+                                    <div class="insight-card">
+                                        <h3>Digital Audit - Data Analytics Audit</h3>
+                                        <p>A l’instar de nos clients, de toutes tailles et opérant dans toutes les industries, notre activité audit se transforme et innove, en adoptant et...</p>
+                                    </div>
+                                    <div class="insight-card">
+                                        <h3>Accounting doctrine</h3>
+                                        <p>Le département Doctrine Comptable intervient en soutien des équipes Grant Thornton pour l’accompagnement de leurs clients dans leurs...</p>
+                                    </div>
+                                    <div class="insight-card">
+                                        <h3>Auditing at the heart of the territories by Grant Thornton</h3>
+                                        <p>Grâce à une implantation au cœur des territoires (24 bureaux), nos équipes Audit accompagnent les groupes internationaux...</p>
+                                    </div>
+                                    <div class="insight-card">
+                                        <h3>People & Culture</h3>
+                                        <p>Chez Grant Thornton, nous vous offrons l’occasion de vivre l’Expérience de la Confiance en révélant le meilleur de vous-même au sein d’équipes conviviales et soudées.</p>
+                                    </div>
+                                    <div class="insight-card">
+                                        <h3>Financial Services</h3>
+                                        <p>Nos équipes d’audit accompagnent les établissements financiers, les sociétés de gestion d’actifs et les entreprises d’assurance.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="insight-image">
+                                <h2>Insight:</h2>
+                                <img src="assets/images/pic.png" alt="Insight Image" />
+                                <div class="overlay-cards">
+                                    <div class="overlay-card">
+                                        <h3>IFRS Example</h3>
+                                        <p>Consolidated Financial Statements...</p>
+                                        <p>Less than a minute | Oct 17, 2024</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div id="international" class="content-item">
-                  <h3>International Business Advisory</h3>
-                  <p>Global business advisory services...</p>
-                </div>
-                <div id="outsourcing" class="content-item">
-                  <h3>Outsourcing or BPO</h3>
-                  <p>Business process outsourcing solutions...</p>
-                </div>
+                
               </div>
             </div>
           </div>
@@ -600,7 +492,7 @@
         <li class="nav-item">
             <a class="nav-link" href="#" id="secteursLink">
               Secteurs 
-              <i class="bi bi-caret-down dropdown-icon"></i>
+              <i class="fa-solid fa-angle-down"></i>
             </a>
             <!-- Mega Dropdown -->
             <div class="mega-dropdown" id="secteursDropdown">
@@ -637,91 +529,90 @@
     </div>
     <div class="navbar-icons">
         <img src="assets/icons/search.svg" alt="Search Icon" class="navbar-icon" id="searchIcon" />
-        <img src="assets/icons/menu.svg" alt="Grid Icon" class="navbar-icon" />
+        <img src="assets/icons/menu.svg" alt="Grid Icon" class="navbar-icon" id="menuIcon" />
         <img src="assets/icons/profile.svg" alt="Profile Icon" class="navbar-icon" />
         
     </div>
-    <div class="dropdown-search" id="dropdownSearch">
-        <input type="text" placeholder="Search insights, services, and experts..." />
-        <button id="closeSearch">✖</button>
-        <div class="popular-searches">
-            <h3>Popular Searches</h3>
-            <ul>
-                <li>Agile</li>
-                <li>Digital</li>
-                <li>Strategy</li>
-            </ul>
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-bar">
+            <input type="text" placeholder="Search insights, services, and experts..." />
+            <button id="closeSearchBar">✖</button>
+            <div class="popular-searches">
+                <h3>Popular Searches</h3>
+                <ul>
+                    <li>Agile</li>
+                    <li>Digital</li>
+                    <li>Strategy</li>
+                </ul>
+            </div>
         </div>
-  </div>
+    </div>
+<!-- Full Page Search Overlay -->
+
+
+
+<div class="dropdown-menu" id="dropdownMenu">
+    <div class="grid">
+        <div class="grid-item">
+            <a href="link-to-finance" target="_blank">
+                <img src="assets/images/gmail.png" alt="Finance">
+                <p>Gmail</p>
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="link-to-chrome" target="_blank">
+                <img src="assets/images/youtube.png" alt="Chrome">
+                <p>Youtube</p>
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="link-to-password" target="_blank">
+                <img src="assets/images/google.png" alt="Password">
+                <p>Google</p>
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="link-to-store" target="_blank">
+                <img src="assets/images/playstore.ong.png" alt="Store">
+                <p>Play</p>
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="link-to-google-apps" target="_blank">
+                <img src="assets/images/drive.png" alt="Google Apps">
+                <p>Drive</p>
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="link-to-text-editor" target="_blank">
+                <img src="assets/images/photos.png" alt="Text Editor">
+                <p>photos</p>
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="link-to-text-editor" target="_blank">
+                <img src="assets/images/newes.png" alt="Text Editor">
+                <p>News</p>
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="link-to-text-editor" target="_blank">
+                <img src="assets/images/translate.png" alt="Text Editor">
+                <p>Translate</p>
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="link-to-text-editor" target="_blank">
+                <img src="assets/images/shoping.png" alt="Text Editor">
+                <p>Shopping</p>
+            </a>
+        </div>
+    </div>
+</div>
+
 </nav>
 
-<script>
-  const sidebarLinks = document.querySelectorAll('.sidebar-link');
-  const contentItems = document.querySelectorAll('.content-item');
-  const megaDropdown = document.querySelector('.mega-dropdown');
-  const closeDropdown = document.getElementById('closeDropdown');
 
-  // Sidebar Hover Functionality
-  sidebarLinks.forEach(link => {
-    link.addEventListener('mouseover', () => {
-      const targetId = link.getAttribute('data-target');
-      contentItems.forEach(item => {
-        item.classList.remove('active');
-      });
-      document.getElementById(targetId).classList.add('active');
-    });
-  });
-
-  // Show Mega Dropdown when hovering over Services
-  const servicesLink = document.getElementById('servicesLink');
-  servicesLink.addEventListener('mouseenter', () => {
-    megaDropdown.style.display = 'block';
-  });
-
-  // Close Mega Dropdown on Clicking Close Icon
-  closeDropdown.addEventListener('click', () => {
-    megaDropdown.style.display = 'none';
-  });
-
-  // Close Mega Dropdown when clicking anywhere outside it
-  document.addEventListener('click', (e) => {
-    if (!megaDropdown.contains(e.target) && !servicesLink.contains(e.target)) {
-      megaDropdown.style.display = 'none';
-    }
-  });
-
-  // Prevent dropdown from closing when scrolling
-  window.addEventListener('scroll', (e) => {
-    if (megaDropdown.style.display === 'block') {
-      megaDropdown.style.position = 'fixed';
-    }
-  });
-  const secteursLink = document.getElementById('secteursLink');
-  secteursLink.addEventListener('mouseenter', () => {
-    document.getElementById('secteursDropdown').style.display = 'block';
-  });
-
-  // Close Mega Dropdown on Clicking Close Icon
-  const closeSecteursDropdown = document.getElementById('closeSecteursDropdown');
-  closeSecteursDropdown.addEventListener('click', () => {
-    document.getElementById('secteursDropdown').style.display = 'none';
-  });
-
-  // Close Mega Dropdown when clicking anywhere outside it
-  document.addEventListener('click', (e) => {
-    if (!document.getElementById('secteursDropdown').contains(e.target) && !secteursLink.contains(e.target)) {
-      document.getElementById('secteursDropdown').style.display = 'none';
-    }
-  });
-  document.getElementById('searchIcon').addEventListener('click', function() {
-    const dropdown = document.getElementById('dropdownSearch');
-    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block'; // Toggle visibility
-});
-
-document.getElementById('closeSearch').addEventListener('click', function() {
-    document.getElementById('dropdownSearch').style.display = 'none'; // Hide the dropdown
-});
-</script>
-
+<script src="assets/js/header.js"></script>
 </body>
 </html>
